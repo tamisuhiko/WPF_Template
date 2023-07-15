@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Wpf.Ui.Main": {
+      "commandName": "Project"
+    }
+  }
+}
