@@ -20,6 +20,7 @@
     WindowBackdropType="Mica"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
+    SizeChanged="MainWindow_OnSizeChanged"
     mc:Ignorable="d">
 
     <ui:FluentWindow.InputBindings>
@@ -38,10 +39,16 @@
         <ui:NavigationView
             x:Name="RootNavigation"
             Grid.Row="1"
-            FooterMenuItemsSource="{Binding ViewModel.NavigationFooter, Mode=OneWay}"
-            MenuItemsSource="{Binding ViewModel.NavigationItems, Mode=OneWay}">
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleVisible="True"
+                           OpenPaneLength="200"
+                           FooterMenuItemsSource="{Binding ViewModel.NavigationFooter, Mode=OneWay}"
+            MenuItemsSource="{Binding ViewModel.NavigationItems, Mode=OneWay}"
+                           Margin="10,0,-10,0">
             <ui:NavigationView.AutoSuggestBox>
-                <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="Search">
+                <ui:AutoSuggestBox x:Name="AutoSuggestBox"
+                                   PlaceholderText="Search"
+                                   Margin="0,0,0,20">
                     <ui:AutoSuggestBox.Icon>
                         <ui:IconSourceElement>
                             <ui:SymbolIconSource Symbol="Search24" />
@@ -54,14 +61,17 @@
                     Margin="42,32,0,0"
                     FontSize="28"
                     FontWeight="DemiBold" />
+                
             </ui:NavigationView.Header>
         </ui:NavigationView>
 
         <ui:TitleBar
             Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
-            Grid.Row="0"
-            Icon="pack://application:,,,/Assets/applicationIcon-256.png">
-            <ui:TitleBar.Tray>
+            Grid.Row="0">
+            <ui:TitleBar.Icon>
+                <ui:ImageIcon Source="pack://application:,,,/Assets/applicationIcon-256.png" />
+            </ui:TitleBar.Icon>
+                    <ui:TitleBar.Tray>
                 <ui:NotifyIcon
                     FocusOnLeftClick="True"
                     Icon="pack://application:,,,/Assets/applicationIcon-256.png"

@@ -14,6 +14,9 @@ public partial class MainWindow : INavigationWindow
 {
     public ViewModels.MainWindowViewModel ViewModel { get; }
 
+    private bool _isUserClosedPane;
+    private bool _isPaneOpenedOrClosedFromCode;
+
     public MainWindow(
         ViewModels.MainWindowViewModel viewModel,
         IPageService pageService,
@@ -65,5 +68,21 @@ public partial class MainWindow : INavigationWindow
     public void SetServiceProvider(IServiceProvider serviceProvider)
     {
         throw new NotImplementedException();
+    }
+
+    private void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        RootNavigation.IsPaneOpen = !(e.NewSize.Width <= 800);
+
+    }
+
+    private void NavigationView_OnPaneOpened(NavigationView sender, RoutedEventArgs args)
+    {
+
+    }
+
+    private void NavigationView_OnPaneClosed(NavigationView sender, RoutedEventArgs args)
+    {
+
     }
 }
